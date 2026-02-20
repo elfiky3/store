@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Winter Collection</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
+    <link href="https://fonts.googleapis.com/css2?family=Gravitas+One&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        :root {
+            --primary-color: #1a1a1a;
+            --secondary-color: #c41e3a;
+            --accent-color: #f0f0f0;
+            --text-dark: #333333;
+            --text-light: #666666;
+            --border-color: #e0e0e0;
+            --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.1);
+            --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.15);
+            --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.2);
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+
+        .h1 {
+            font-family: "Pacifico", cursive;
+            font-weight: 400;
+            font-style: normal;
+        }
+
+        .line {
+            margin-top: 7px;
+            width: 20%;
+            height: 10px;
+            border-radius: 10px;
+            background-color: red;
+        }
+
+        .h2 {
+            font-family: "Gravitas One", serif;
+            font-weight: 400;
+            font-style: normal;
+        }
+
+        .h3 {
+            font-weight: bolder;
+            font-family: "Playwrite US Trad", cursive;
+            font-style: normal;
+        }
+
+        .nav5 {
+            z-index: 99999;
+        }
+
+        body {
+            background-color: #ffffff;
+        }
+
+        /* ================= HERO SECTION ================= */
+
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 80px;
+            background-color: black;
+        }
+
+        /* Dark Gradient Overlay */
+        .hero .overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(120deg,
+                    rgba(0, 0, 0, 0.95) 35%,
+                    rgba(0, 0, 0, 0.75) 55%,
+                    rgba(0, 0, 0, 0.4) 75%,
+                    rgba(0, 0, 0, 0.1) 100%);
+            z-index: 1;
+        }
+
+        /* Content */
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            color: #fff;
+            max-width: 500px;
+            text-align: left;
+        }
+
+        /* Brand */
+
+        .brand img {
+            position: absolute;
+            top: -120px;
+            right: 0;
+            font-size: 28px;
+            font-weight: bold;
+            width: 100px;
+        }
+
+        /* Title */
+        .hero-content h1 {
+            font-size: 64px;
+            font-weight: 800;
+            letter-spacing: 3px;
+            line-height: 1.1;
+            margin-bottom: 20px;
+        }
+
+        /* Subtitle */
+        .hero-content p {
+            font-size: 20px;
+            letter-spacing: 2px;
+            opacity: 0.9;
+        }
+
+        .span {
+            height: 500px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .about {
+            background-color: black;
+        }
+
+
+
+
+        .scroll-top-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: #0d6efd;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 999;
+        }
+
+        .scroll-top-btn.show {
+            display: flex;
+        }
+
+        .scroll-top-btn:hover {
+            background: #0b5ed7;
+            transform: translateY(-5px);
+            box-shadow: 0 8px 32px rgba(13, 110, 253, 0.4);
+        }
+
+        .scroll-top-btn:active {
+            transform: translateY(0);
+        }
+
+
+
+        .text {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: start;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            border-radius: 0;
+        }
+
+        .card0 img {
+            height: 300px;
+            transition: all 0.4s ease;
+        }
+
+        .card0:hover {
+            transition: all 0.4s ease;
+            transform: translateY(-15px);
+        }
+
+        .contactt {
+            height: 200px;
+            background: linear-gradient(#0b5ed7, #6aa6ff);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            border-radius: 10px;
+        }
+
+        .contactt:hover {
+            transition: all 0.4s ease;
+            transform: translateY(-15px);
+        }
+
+        .he {
+            position: relative;
+            z-index: 2;
+            color: #fff;
+            max-width: 700px;
+            text-align: left;
+        }
+
+        .he h1 {
+            font-weight: 800;
+            letter-spacing: 3px;
+            line-height: 1.1;
+            margin-bottom: 20px;
+        }
+
+        .footer {
+            background-color: var(--primary-color);
+            color: #ffffff;
+            padding: 3rem 0 1rem;
+        }
+
+        .footer-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: #ffffff;
+        }
+
+        .footer-text {
+            color: #cccccc;
+            font-size: 0.95rem;
+        }
+
+        .footer-links {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.75rem;
+        }
+
+        .footer-links a {
+            color: #cccccc;
+            text-decoration: none;
+            transition: var(--transition);
+            font-size: 0.95rem;
+        }
+
+        .footer-links a:hover {
+            color: var(--secondary-color);
+            padding-right: 0.5rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-link {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+            text-decoration: none;
+        }
+
+        .social-link:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-3px);
+        }
+
+        .footer-divider {
+            border-color: rgba(255, 255, 255, 0.1);
+            margin: 2rem 0;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            color: #999999;
+            font-size: 0.9rem;
+        }
+
+        /* ============================================
+   Scroll to Top Button
+   ============================================ */
+
+        .scroll-top-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background-color: var(--secondary-color);
+            color: #ffffff;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            box-shadow: var(--shadow-md);
+            transition: var(--transition);
+            z-index: 999;
+        }
+
+        .scroll-top-btn.show {
+            display: flex;
+        }
+
+        .scroll-top-btn:hover {
+            background-color: #a01830;
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .scroll-top-btn:active {
+            transform: translateY(0);
+        }
+
+        /* ================= CART BADGE ================= */
+        .cart-badge {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background-color: var(--secondary-color);
+            color: white;
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        .cart-link-wrapper {
+            position: relative;
+            display: inline-block;
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg bg-danger-subtle position-fixed w-100 nav5 position-relative top-0">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="index.html">H&M STORE</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="index.html">HOME</a>
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            CATEGORIES
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#watchs">Watches</a></li>
+                            <li><a class="dropdown-item" href="#shirts">Shirts</a></li>
+                            <li><a class="dropdown-item" href="#hodies">Hoodies</a></li>
+                            <li><a class="dropdown-item" href="#jeans">Jeans</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="shop.html">SHOP</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">ABOUT</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">CONTACT</a>
+                    </li>
+                    <li class="nav-item">
+                        <div class="cart-link-wrapper">
+                            <a class="nav-link" href="cart.html">
+                                <i class="fas fa-shopping-cart"></i> CART
+                            </a>
+                            <span class="cart-badge" id="cartBadge">0</span>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <img src="imgs/ChatGPT_Image_7_يناير_2026__01_23_26_م-removebg-preview.png" alt="" class="span"
+            data-aos="fade-left">
+        <div class="hero-content" data-aos="fade-right">
+            <span class="brand"><img
+                    src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/H&M-Logo.svg/2560px-H&M-Logo.svg.png"
+                    alt=""></span>
+            <h1>
+                WELCOME <br>
+                TO H&M STORE
+            </h1>
+            <p>UP TO 50% OFF</p>
+        </div>
+    </section>
+    <section class="container-fluid p-5">
+        <div class="container">
+            <section class="row mt-5" id="watchs">
+                <h2 class="mb-5 h1">WATCHES :<br>
+                    <div class="line"></div>
+                </h2>
+                <div class="col-md-4 mb-5 card0">
+                    <div class="card m-auto" style="width: 18rem;" data-aos="fade-up">
+                        <div class="position-relative img1">
+                            <img src="imgs/watch1.jpeg" class="card-img-top" alt="...">
+                            <a href="shop.html" class="btn btn-danger btn-lg text">shop now</a>
+                        </div>
+                        <div class="card-body">
+                            
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 card0">
+                    <div class="card m-auto" style="width: 18rem;" data-aos="fade-up">
+                        <div class="position-relative img1">
+                            <img src="imgs/watch2.jpeg" class="card-img-top" alt="...">
+                            <a href="shop.html" class="btn btn-danger btn-lg text">shop now</a>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title fw-bolder">35.99$</h5>
+                        </div>
+                    </div>
+                </div>
+
+            </section>
+            <section class="row mt-5" id="shirts">
+                <h2 class="mb-5 h1">SHIRTS :<br>
+                    <div class="line"></div>
+                </h2>
+                <div class="col-md-4 mb-5 card0">
+                    <div class="card m-auto" style="width: 18rem;" data-aos="fade-up">
+                        <div class="position-relative img1">
+                            <img src="imgs/shirt9.jpeg" class="card-img-top" alt="...">
+                            <a href="shop.html" class="btn btn-danger btn-lg text">shop now</a>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title fw-bolder">19.99$</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 card0">
+                    <div class="card m-auto" style="width: 18rem;" data-aos="fade-up">
+                        <div class="position-relative img1">
+                            <img src="imgs/shirt2.jpeg" class="card-img-top" alt="...">
+                            <a href="shop.html" class="btn btn-danger btn-lg text">shop now</a>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title fw-bolder">24.99$</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 card0">
+                    <div class="card m-auto" style="width: 18rem;" data-aos="fade-up">
+                        <div class="position-relative img1">
+                            <img src="imgs/shirt3.jpeg" class="card-img-top" alt="...">
+                            <a href="shop.html" class="btn btn-danger btn-lg text">shop now</a>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title fw-bolder">17.99$</h5>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="row mt-5" id="hodies">
+                <h2 class="mb-5 h1">HODIES :<br>
+                    <div class="line"></div>
+                </h2>
+                <div class="col-md-4 mb-5 card0">
+                    <div class="card m-auto" style="width: 18rem;" data-aos="fade-up">
+                        <div class="position-relative img1">
+                            <img src="imgs/hody1.jpeg" class="card-img-top" alt="...">
+                            <a href="shop.html" class="btn btn-danger btn-lg text">shop now</a>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title fw-bolder">25.99$</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 card0">
+                    <div class="card m-auto" style="width: 18rem;" data-aos="fade-up">
+                        <div class="position-relative img1">
+                            <img src="imgs/hody2.jpeg" class="card-img-top" alt="...">
+                            <a href="shop.html" class="btn btn-danger btn-lg text">shop now</a>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title fw-bolder">45.99$</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 card0">
+                    <div class="card m-auto" style="width: 18rem;" data-aos="fade-up">
+                        <div class="position-relative img1">
+                            <img src="imgs/hody3.jpeg" class="card-img-top" alt="...">
+                            <a href="shop.html" class="btn btn-danger btn-lg text">shop now</a>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title fw-bolder">17.99$</h5>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="row mt-5" id="jeans">
+                <h2 class="mb-5 h1">JEANS :<br>
+                    <div class="line"></div>
+                </h2>
+                <div class="col-md-4 mb-5 card0">
+                    <div class="card m-auto" style="width: 18rem;" data-aos="fade-up">
+                        <div class="position-relative img1">
+                            <img src="imgs/jeans1.jpeg" class="card-img-top" alt="...">
+                            <a href="shop.html" class="btn btn-danger btn-lg text">shop now</a>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title fw-bolder">29.99$</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 card0">
+                    <div class="card m-auto" style="width: 18rem;" data-aos="fade-up">
+                        <div class="position-relative img1">
+                            <img src="imgs/jeans2.jpeg" class="card-img-top" alt="...">
+                            <a href="shop.html" class="btn btn-danger btn-lg text">shop now</a>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title fw-bolder">40.99$</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 card0">
+                    <div class="card m-auto" style="width: 18rem;" data-aos="fade-up">
+                        <div class="position-relative img1">
+                            <img src="imgs/jeans3.jpeg" class="card-img-top" alt="...">
+                            <a href="shop.html" class="btn btn-danger btn-lg text">shop now</a>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title fw-bolder">37.99$</h5>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </section>
+    <section class="contact bg-secondary-subtle" id="contact">
+        <div class="container p-5">
+            <div class="row text-light">
+                <h1 class="h3 text-center mb-5 text-danger">CONTACT US</h1>
+                <div class="col-4">
+                    <div class="col-12 contactt">
+                        <i class="fa-regular fa-location-dot display-6"></i>
+                        <h1>location</h1>
+                        <p>EGYPT , ELBYHERA</p>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <div class="col-12 contactt">
+                        <i class="fa-solid fa-phone display-6"></i>
+                        <h1>phone</h1>
+                        <p>+2 0123 567 8957</p>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <div class="col-12 contactt">
+                        <i class="fa-regular fa-envelope display-6"></i>
+                        <h1>email</h1>
+                        <p>H&M @gmail.com</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="about" class="about">
+        <div class="container p-4">
+            <h1 class="h3 text-center mb-5 text-success display-3">ABOUT US</h1>
+            <div class="d-flex align-items-center justify-content-between w-100">
+
+
+                <div class="he w-75 " data-aos="fade-left">
+                    <h1>
+                        We specialize in modern fashion.
+                    </h1>
+
+                    <p>H&M Store offers the finest collections of clothing and accessories from the world's most famous
+                        brands. We aim to provide our valued customers with a unique and enjoyable shopping experience.
+                    </p>
+                    <ul>
+                        <li>Guaranteed high quality</li>
+
+                        <li>Competitive pricesl </li>
+
+                        <li>Fast delivery</li>
+
+                        <li>Excellent customer service</li>
+                    </ul>
+                </div>
+                <img src="imgs/green_hoodie_man.png" alt="" class="span" data-aos="fade-right">
+            </div>
+    </section>
+    <footer class="footer">
+        <div class="container-lg">
+            <div class="row g-4 mb-4">
+                <div class="col-md-6 col-lg-3">
+                    <h5 class="footer-title">About Store</h5>
+                    <p class="footer-text">H&M Store offers the best clothing and accessories at competitive prices.</p>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <h5 class="footer-title">Categories</h5>
+                    <ul class="footer-links">
+                        <li><a href="#watchs">Watches</a></li>
+                        <li><a href="#shirts">Shirts</a></li>
+                        <li><a href="#hoodies">Hoodies</a></li>
+                        <li><a href="#jeans">Jeans</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <h5 class="footer-title">Quick Links</h5>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <h5 class="footer-title">Follow Us</h5>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+            </div>
+            <hr class="footer-divider">
+            <div class="footer-bottom">
+                <p class="mb-0">&copy; 2026 H&M Store. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+
+    <button id="scrollTopBtn" class="scroll-top-btn">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+    <script>
+        // Scroll to top button functionality
+        const scrollTopBtn = document.getElementById('scrollTopBtn');
+
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                scrollTopBtn.classList.add('show');
+            } else {
+                scrollTopBtn.classList.remove('show');
+            }
+        });
+
+        scrollTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        const imageContainers = document.querySelectorAll(".img1");
+
+        imageContainers.forEach(container => {
+            const text = container.querySelector(".text");
+
+
+            container.addEventListener('mouseover', function () {
+                text.style.opacity = '1';
+            });
+
+
+            container.addEventListener('mouseout', function () {
+                text.style.opacity = '0';
+            });
+        });
+
+    </script>
+    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 1200,
+            once: true
+        });
+
+        // Update cart badge on page load
+        function updateCartBadge() {
+            const cart = localStorage.getItem('hm_cart');
+            const cartItems = cart ? JSON.parse(cart) : [];
+            const badge = document.getElementById('cartBadge');
+            badge.textContent = cartItems.length;
+        }
+
+        updateCartBadge();
+    </script>
+</body>
+
+</html>

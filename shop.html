@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Shop - H&M Store</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
+    <link href="https://fonts.googleapis.com/css2?family=Gravitas+One&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        :root {
+            --primary-color: #1a1a1a;
+            --secondary-color: #c41e3a;
+            --accent-color: #f0f0f0;
+            --text-dark: #333333;
+            --text-light: #666666;
+            --border-color: #e0e0e0;
+            --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.1);
+            --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.15);
+            --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.2);
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .h1 {
+            font-family: "Pacifico", cursive;
+            font-weight: 400;
+            font-style: normal;
+        }
+
+        .line {
+            margin-top: 7px;
+            width: 20%;
+            height: 10px;
+            border-radius: 10px;
+            background-color: red;
+        }
+
+        .h2 {
+            font-family: "Gravitas One", serif;
+            font-weight: 400;
+            font-style: normal;
+        }
+
+        .h3 {
+            font-weight: bolder;
+            font-family: "Playwrite US Trad", cursive;
+            font-style: normal;
+        }
+
+        .nav5 {
+            z-index: 99999;
+        }
+
+        body {
+            background-color: #ffffff;
+        }
+
+        .shop-hero {
+            position: relative;
+            min-height: 60vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 80px 20px;
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+        }
+
+        .shop-hero .overlay {
+            position: absolute;
+            
+            background: linear-gradient(120deg,
+                    rgba(0, 0, 0, 0.95) 35%,
+                    rgba(0, 0, 0, 0.75) 55%,
+                    rgba(0, 0, 0, 0.4) 75%,
+                    rgba(0, 0, 0, 0.1) 100%);
+            z-index: 1;
+        }
+
+        .shop-hero-content {
+            position: relative;
+            z-index: 2;
+            color: #fff;
+            text-align: center;
+        }
+
+        .shop-hero-content h1 {
+            font-size: 56px;
+            font-weight: 800;
+            letter-spacing: 3px;
+            line-height: 1.1;
+            margin-bottom: 20px;
+        }
+
+        .shop-hero-content p {
+            font-size: 18px;
+            letter-spacing: 2px;
+            opacity: 0.9;
+        }
+        .shop-products {
+            padding: 80px 20px;
+            background-color: #ffffff;
+        }
+
+        .shop-products .container {
+            max-width: 1200px;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+        }
+
+        .product-card:hover {
+            transform: translateY(-15px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .product-image {
+            position: relative;
+            width: 100%;
+            height: 300px;
+            overflow: hidden;
+            background-color: #f5f5f5;
+        }
+
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .product-card:hover .product-image img {
+            transform: scale(1.05);
+        }
+
+        .product-info {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .product-price {
+            font-size: 24px;
+            font-weight: bold;
+            color: var(--secondary-color);
+            margin-bottom: 15px;
+        }
+
+        .product-description {
+            font-size: 14px;
+            color: var(--text-light);
+            margin-bottom: 15px;
+        }
+
+        .add-to-cart-btn {
+            background-color: var(--secondary-color);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: var(--transition);
+            width: 100%;
+        }
+
+        .add-to-cart-btn:hover {
+            background-color: #a01830;
+            transform: translateY(-2px);
+        }
+
+        .shop-filters {
+            background-color: #f9f9f9;
+            padding: 30px;
+            border-radius: 8px;
+            margin-bottom: 40px;
+        }
+
+        .filter-group {
+            margin-bottom: 20px;
+        }
+
+        .filter-group label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+
+        .filter-group select,
+        .filter-group input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid var(--border-color);
+            border-radius: 5px;
+            font-size: 14px;
+        }
+
+        /* ================= FOOTER ================= */
+
+        .footer {
+            background-color: var(--primary-color);
+            color: #ffffff;
+            padding: 3rem 0 1rem;
+        }
+
+        .footer-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: #ffffff;
+        }
+
+        .footer-text {
+            color: #cccccc;
+            font-size: 0.95rem;
+        }
+
+        .footer-links {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.75rem;
+        }
+
+        .footer-links a {
+            color: #cccccc;
+            text-decoration: none;
+            transition: var(--transition);
+            font-size: 0.95rem;
+        }
+
+        .footer-links a:hover {
+            color: var(--secondary-color);
+            padding-right: 0.5rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-link {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+            text-decoration: none;
+        }
+
+        .social-link:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-3px);
+        }
+
+        .footer-divider {
+            border-color: rgba(255, 255, 255, 0.1);
+            margin: 2rem 0;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            color: #999999;
+            font-size: 0.9rem;
+        }
+
+        /* ================= SCROLL TO TOP BUTTON ================= */
+
+        .scroll-top-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background-color: var(--secondary-color);
+            color: #ffffff;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            box-shadow: var(--shadow-md);
+            transition: var(--transition);
+            z-index: 999;
+        }
+
+        .scroll-top-btn.show {
+            display: flex;
+        }
+
+        .scroll-top-btn:hover {
+            background-color: #a01830;
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .scroll-top-btn:active {
+            transform: translateY(0);
+        }
+
+        /* ================= CART BADGE ================= */
+        .cart-badge {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background-color: var(--secondary-color);
+            color: white;
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        .cart-link-wrapper {
+            position: relative;
+            display: inline-block;
+        }
+
+        /* ================= RESPONSIVE ================= */
+
+        @media (max-width: 768px) {
+            .shop-hero {
+                min-height: 40vh;
+                padding: 60px 20px;
+            }
+
+            .shop-hero-content h1 {
+                font-size: 36px;
+            }
+
+            .product-grid {
+                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+                gap: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body class="m-0 p-0">
+
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg bg-danger-subtle  w-100 nav5 ">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="index.html">H&M STORE</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">HOME</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="shop.html">SHOP</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html#about">ABOUT</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html#contact">CONTACT</a>
+                    </li>
+                    <li class="nav-item">
+                        <div class="cart-link-wrapper">
+                            <a class="nav-link" href="cart.html">
+                                <i class="fas fa-shopping-cart"></i> CART
+                            </a>
+                            <span class="cart-badge" id="cartBadge">0</span>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Shop Hero Section -->
+    <section class="shop-hero">
+        <div class="overlay"></div>
+        <div class="shop-hero-content">
+            <h1>OUR COLLECTION</h1>
+            <p>Discover our latest fashion items</p>
+        </div>
+    </section>
+
+    <!-- Shop Products Section -->
+    <section class="shop-products">
+        <div class="container">
+            <!-- Filters -->
+            <div class="shop-filters">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="filter-group">
+                            <label for="categoryFilter">Category</label>
+                            <select id="categoryFilter">
+                                <option value="">All Categories</option>
+                                <option value="watches">Watches</option>
+                                <option value="shirts">Shirts</option>
+                                <option value="hoodies">Hoodies</option>
+                                <option value="jeans">Jeans</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="filter-group">
+                            <label for="priceFilter">Price Range</label>
+                            <select id="priceFilter">
+                                <option value="">All Prices</option>
+                                <option value="0-20">$0 - $20</option>
+                                <option value="20-50">$20 - $50</option>
+                                <option value="50+">$50+</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="filter-group">
+                            <label for="sortFilter">Sort By</label>
+                            <select id="sortFilter">
+                                <option value="">Default</option>
+                                <option value="price-low">Price: Low to High</option>
+                                <option value="price-high">Price: High to Low</option>
+                                <option value="newest">Newest</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Products Grid -->
+            <div class="product-grid" id="productsGrid">
+                <!-- Products will be dynamically loaded here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container-lg">
+            <div class="row g-4 mb-4">
+                <div class="col-md-6 col-lg-3">
+                    <h5 class="footer-title">About Store</h5>
+                    <p class="footer-text">H&M Store offers the best clothing and accessories at competitive prices.</p>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <h5 class="footer-title">Categories</h5>
+                    <ul class="footer-links">
+                        <li><a href="index.html#watchs">Watches</a></li>
+                        <li><a href="index.html#shirts">Shirts</a></li>
+                        <li><a href="index.html#hoodies">Hoodies</a></li>
+                        <li><a href="index.html#jeans">Jeans</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <h5 class="footer-title">Quick Links</h5>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="index.html#about">About</a></li>
+                        <li><a href="index.html#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <h5 class="footer-title">Follow Us</h5>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+            </div>
+            <hr class="footer-divider">
+            <div class="footer-bottom">
+                <p class="mb-0">&copy; 2026 H&M Store. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scroll to Top Button -->
+    <button id="scrollTopBtn" class="scroll-top-btn">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+
+    <script>
+        // Products data
+        const products = [
+            // Watches
+            { id: 1, name: 'Classic Watch', price: 45.99, category: 'watches', image: 'imgs/watch1.jpeg' },
+            { id: 2, name: 'Digital Watch', price: 35.99, category: 'watches', image: 'imgs/watch2.jpeg' },
+            { id: 3, name: 'Sport Watch', price: 55.99, category: 'watches', image: 'imgs/watch3.jpeg' },
+            { id: 4, name: 'Elegant Watch', price: 65.99, category: 'watches', image: 'imgs/watch4.jpeg' },
+
+            // Shirts
+            { id: 5, name: 'Cotton Shirt', price: 19.99, category: 'shirts', image: 'imgs/shirt9.jpeg' },
+            { id: 6, name: 'Casual Shirt', price: 24.99, category: 'shirts', image: 'imgs/shirt2.jpeg' },
+            { id: 7, name: 'Formal Shirt', price: 17.99, category: 'shirts', image: 'imgs/shirt3.jpeg' },
+            { id: 8, name: 'Slim Fit Shirt', price: 15.09, category: 'shirts', image: 'imgs/shirt4.jpeg' },
+            { id: 9, name: 'Basic Shirt', price: 11.99, category: 'shirts', image: 'imgs/shirt5.jpeg' },
+            { id: 10, name: 'Premium Shirt', price: 25.79, category: 'shirts', image: 'imgs/shirt7.jpeg' },
+
+            // Hoodies
+            { id: 11, name: 'Comfort Hoodie', price: 25.99, category: 'hoodies', image: 'imgs/hody1.jpeg' },
+            { id: 12, name: 'Premium Hoodie', price: 45.99, category: 'hoodies', image: 'imgs/hody2.jpeg' },
+            { id: 13, name: 'Classic Hoodie', price: 17.99, category: 'hoodies', image: 'imgs/hody3.jpeg' },
+            { id: 14, name: 'Trendy Hoodie', price: 15.09, category: 'hoodies', image: 'imgs/hody7.jpeg' },
+            { id: 15, name: 'Cozy Hoodie', price: 11.99, category: 'hoodies', image: 'imgs/hody6.jpeg' },
+            { id: 16, name: 'Sport Hoodie', price: 25.79, category: 'hoodies', image: 'imgs/hody4.jpeg' },
+
+            // Jeans
+            { id: 17, name: 'Classic Jeans', price: 29.99, category: 'jeans', image: 'imgs/jeans1.jpeg' },
+            { id: 18, name: 'Slim Fit Jeans', price: 40.99, category: 'jeans', image: 'imgs/jeans2.jpeg' },
+            { id: 19, name: 'Skinny Jeans', price: 37.99, category: 'jeans', image: 'imgs/jeans3.jpeg' },
+            { id: 20, name: 'Casual Jeans', price: 19.09, category: 'jeans', image: 'imgs/jeans4.jpeg' },
+            { id: 21, name: 'Distressed Jeans', price: 34.99, category: 'jeans', image: 'imgs/jeans5.jpeg' },
+            { id: 22, name: 'Premium Jeans', price: 22.79, category: 'jeans', image: 'imgs/jeans6.jpeg' }
+        ];
+
+        // Get cart from LocalStorage
+        function getCart() {
+            const cart = localStorage.getItem('hm_cart');
+            return cart ? JSON.parse(cart) : [];
+        }
+
+        // Save cart to LocalStorage
+        function saveCart(cart) {
+            localStorage.setItem('hm_cart', JSON.stringify(cart));
+            updateCartBadge();
+        }
+
+        // Update cart badge
+        function updateCartBadge() {
+            const cart = getCart();
+            const badge = document.getElementById('cartBadge');
+            badge.textContent = cart.length;
+        }
+
+        // Display products
+        function displayProducts(productsToDisplay) {
+            const grid = document.getElementById('productsGrid');
+            grid.innerHTML = '';
+
+            productsToDisplay.forEach(product => {
+                const card = document.createElement('div');
+                card.className = 'product-card';
+                card.setAttribute('data-aos', 'fade-up');
+                card.innerHTML = `
+                    <div class="product-image">
+                        <img src="${product.image}" alt="${product.name}">
+                    </div>
+                    <div class="product-info">
+                        <h5>${product.name}</h5>
+                        <p class="product-description">${product.category.charAt(0).toUpperCase() + product.category.slice(1)}</p>
+                        <div class="product-price">$${product.price.toFixed(2)}</div>
+                        <button class="add-to-cart-btn" onclick="addToCart(${product.id}, '${product.name}', ${product.price}, '${product.image}')">
+                            Add to Cart
+                        </button>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+
+            AOS.refresh();
+        }
+
+        // Add to cart
+        function addToCart(id, name, price, image) {
+            const cart = getCart();
+            const product = { id, name, price, image, quantity: 1 };
+
+            // Check if product already exists
+            const existingProduct = cart.find(item => item.id === id);
+            if (existingProduct) {
+                existingProduct.quantity += 1;
+            } else {
+                cart.push(product);
+            }
+
+            saveCart(cart);
+            alert(`✓ "${name}" added to cart!`);
+        }
+
+        // Filter and sort functionality
+        function filterAndSort() {
+            const category = document.getElementById('categoryFilter').value;
+            const price = document.getElementById('priceFilter').value;
+            const sort = document.getElementById('sortFilter').value;
+
+            let filtered = products;
+
+            // Filter by category
+            if (category) {
+                filtered = filtered.filter(p => p.category === category);
+            }
+
+            // Filter by price
+            if (price) {
+                if (price === '0-20') {
+                    filtered = filtered.filter(p => p.price >= 0 && p.price <= 20);
+                } else if (price === '20-50') {
+                    filtered = filtered.filter(p => p.price > 20 && p.price <= 50);
+                } else if (price === '50+') {
+                    filtered = filtered.filter(p => p.price > 50);
+                }
+            }
+
+            // Sort
+            if (sort === 'price-low') {
+                filtered.sort((a, b) => a.price - b.price);
+            } else if (sort === 'price-high') {
+                filtered.sort((a, b) => b.price - a.price);
+            }
+
+            displayProducts(filtered);
+        }
+
+        // Event listeners for filters
+        document.getElementById('categoryFilter').addEventListener('change', filterAndSort);
+        document.getElementById('priceFilter').addEventListener('change', filterAndSort);
+        document.getElementById('sortFilter').addEventListener('change', filterAndSort);
+
+        // Scroll to top button
+        const scrollTopBtn = document.getElementById('scrollTopBtn');
+
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                scrollTopBtn.classList.add('show');
+            } else {
+                scrollTopBtn.classList.remove('show');
+            }
+        });
+
+        scrollTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Initialize AOS
+        AOS.init({
+            duration: 1200,
+            once: true
+        });
+
+        // Display all products on page load and update cart badge
+        displayProducts(products);
+        updateCartBadge();
+    </script>
+</body>
+
+</html>
